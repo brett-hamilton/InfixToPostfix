@@ -55,7 +55,27 @@ namespace InfixToPostfix
 		/// <param name="op">The operation to be created</param>
 		public Operator (string op)
 		{
+			Symbol = op;
 
+			// Deterimine the precendence based on the operator
+			switch (op)
+			{
+				case "(":
+				case ")":
+					Precedence = 3;
+					break;
+				case "/":
+				case "*":
+					Precedence = 2;
+					break;
+				case "+":
+				case "-":
+					Precedence = 1;
+					break;
+				case "=":
+					Precedence = 0;
+					break;
+			}
 		} // end Operator
 		#endregion
 
@@ -66,10 +86,10 @@ namespace InfixToPostfix
 		/// <param name="lhs">The left hand side operand</param>
 		/// <param name="rhs">The right hand side operand</param>
 		/// <returns>True if lhs operator is greater than rhs operator</returns>
-		public static bool operator > (Operator lhs, Operator rhs)
+		public static bool operator >= (Operator lhs, Operator rhs)
 		{
-			return true;
-		} // end operator >
+			return lhs.Precedence >= rhs.Precedence;
+		} // end operator >=
 
 		/// <summary>
 		/// Determines if one Operator is less than another
@@ -77,10 +97,10 @@ namespace InfixToPostfix
 		/// <param name="lhs">The left hand side operand</param>
 		/// <param name="rhs">The right hand side operand</param>
 		/// <returns>True if lhs operator is less than rhs operator</returns>
-		public static bool operator < (Operator lhs, Operator rhs)
+		public static bool operator <= (Operator lhs, Operator rhs)
 		{
-			return true;
-		} // end operator <
+			return lhs.Precedence <= rhs.Precedence;
+		} // end operator <=
 		#endregion
 	} // end Operator
 }

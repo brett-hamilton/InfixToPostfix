@@ -1,0 +1,14 @@
+A = ((((A+B)-C)*D)/(E+1))
+Alpha = Beta + Gamma * Delta
+Beta = Alpha / Delta - Gamma
+Q = W * (E + R) / T * Y
+A = (B+C) * (C - D)/2 + E
+Z = (Y * X / (U + V)
+Blue = Green + Yellow)
+John = (Jim + Jake) * (Joanne / Jethro)
+720 = 6 * 5 * 4 * 3 * 2 * 1
+
+A = (((A/B+C)-D/(E-1))
+dResult = (3.0 * arAmt[nI] / 2.0 + 6.0) * dFudgeFactor
+dAvg=(dA+dB+dC+dD+dE)/5.0
+iAny=iA+iB-(iC*iD/iE)(iF/iG/iH)+iI*iJ

@@ -99,7 +99,9 @@ namespace Utils
 		public static void GoodbyeMessage (string msg, string author="Brett Hamilton",
 			string subtitle="Computer Science - 2210 Data Structures")
 		{
-			MessageBox.Show (msg, "Goodbye and Thank You", MessageBoxButtons.OK,
+			string body = $"Created by: {author}\n{subtitle}\n\n{msg}";
+
+			MessageBox.Show (body, "Goodbye and Thank You", MessageBoxButtons.OK,
 				MessageBoxIcon.Information);
 		} // end GoodbyeMessage
 		#endregion

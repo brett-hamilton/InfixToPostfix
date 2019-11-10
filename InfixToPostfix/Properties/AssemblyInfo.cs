@@ -1,16 +1,30 @@
-﻿using System.Reflection;
+﻿///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//	Project:           Project 3 - Infix to Postfix Conversion
+//	File Name:         AssemblyInfo.cs
+//	Description:       Contains assemly information about this program; used in the About form
+//	Course:            CSCI 2210 - Data Structures	
+//	Author:            Brett Hamilton, hamiltonb@etsu.edu, Dept. of Computing, East Tennessee State University
+//	Created:           Thursday, November 7, 2019
+//	Copyright:         Brett Hamilton, 2019
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle ("InfixToPostfix")]
-[assembly: AssemblyDescription ("")]
+[assembly: AssemblyTitle ("Infix To Postfix")]
+[assembly: AssemblyDescription ("Infix to Postfix converts infix expressions to properly formatted " +
+	"postfix expressions. Users may open existing text files containing valid infix expressions to " +
+	"convert, or type infix expressions into the program to generate the postix notation.")]
 [assembly: AssemblyConfiguration ("")]
-[assembly: AssemblyCompany ("")]
-[assembly: AssemblyProduct ("InfixToPostfix")]
-[assembly: AssemblyCopyright ("Copyright ©  2019")]
+[assembly: AssemblyCompany ("Author: Brett Hamilton")]
+[assembly: AssemblyProduct ("Infix to Postfix")]
+[assembly: AssemblyCopyright ("Copyright © Brett Hamilton, 2019")]
 [assembly: AssemblyTrademark ("")]
 [assembly: AssemblyCulture ("")]
 
@@ -32,5 +46,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion ("1.0.0.0")]
-[assembly: AssemblyFileVersion ("1.0.0.0")]
+[assembly: AssemblyVersion ("1.4.28.1674")]
+[assembly: AssemblyFileVersion ("1.4.28.1674")]
