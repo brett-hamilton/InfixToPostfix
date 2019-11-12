@@ -18,8 +18,12 @@ using System.Windows.Forms;
 
 namespace InfixToPostfix
 {
+	/// <summary>
+	/// Runs the infix to postfix converter program, starting with splash screen
+	/// </summary>
 	public static class InfixToPostfixDriver
 	{
+		#region Main
 		/// <summary>
 		/// The main entry point for the application.
 		/// </summary>
@@ -31,5 +35,6 @@ namespace InfixToPostfix
 			Application.Run (new SplashForm ( ));
 			Application.Run (new InfixToPostfixForm ( ));
 		} // end Main
+		#endregion
 	} // end InfixToPostfixDriver
 }

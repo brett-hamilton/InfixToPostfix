@@ -2,7 +2,7 @@
 //
 //	Project:           Project 3 - Infix to Postfix Conversion
 //	File Name:         AssemblyInfo.cs
-//	Description:       Contains assemly information about this program; used in the About form
+//	Description:       Contains assembly information about this program; used in the About form
 //	Course:            CSCI 2210 - Data Structures	
 //	Author:            Brett Hamilton, hamiltonb@etsu.edu, Dept. of Computing, East Tennessee State University
 //	Created:           Thursday, November 7, 2019
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle ("Infix To Postfix")]
 [assembly: AssemblyDescription ("Infix to Postfix converts infix expressions to properly formatted " +
 	"postfix expressions. Users may open existing text files containing valid infix expressions to " +
-	"convert, or type infix expressions into the program to generate the postix notation.")]
+	"convert, or type infix expressions into the program to generate the postfix notation.")]
 [assembly: AssemblyConfiguration ("")]
 [assembly: AssemblyCompany ("Author: Brett Hamilton")]
 [assembly: AssemblyProduct ("Infix to Postfix")]

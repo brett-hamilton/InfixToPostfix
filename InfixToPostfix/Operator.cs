@@ -20,8 +20,8 @@ using System.Threading.Tasks;
 namespace InfixToPostfix
 {
 	/// <summary>
-	/// Represents an operator symbol, sets the precendence, and allows the operator to be compared
-	///		to other operators for construction of postfix expression in another class
+	/// Represents an operator symbol, sets the precedence, and allows the operator to be compared
+	///		to other operators for construction of a postfix expression in another class
 	/// </summary>
 	public class Operator
 	{
@@ -29,11 +29,11 @@ namespace InfixToPostfix
 		/// <summary>
 		/// Gets or sets the precedence of the operator
 		/// </summary>
-		/// <value>The number representing the precendence</value>
+		/// <value>The number representing the precedence</value>
 		public int Precedence { get; set; }
 		
 		/// <summary>
-		/// Gets or sets the string verison of the symbol
+		/// Gets or sets the string version of the symbol
 		/// </summary>
 		/// <value>String representation of the symbol</value>
 		public string Symbol { get; set; }
@@ -57,7 +57,7 @@ namespace InfixToPostfix
 		{
 			Symbol = op;
 
-			// Deterimine the precendence based on the operator
+			// Determine the precedence based on the operator
 			switch (op)
 			{
 				case "(":
@@ -81,22 +81,26 @@ namespace InfixToPostfix
 
 		#region Comparisons		
 		/// <summary>
-		/// Determines if one Operator is greater than another
+		/// Determines if one Operator is greater than or equal to another
 		/// </summary>
 		/// <param name="lhs">The left hand side operand</param>
 		/// <param name="rhs">The right hand side operand</param>
-		/// <returns>True if lhs operator is greater than rhs operator</returns>
+		/// <returns>
+		/// True if lhs operator is greater than or equal to rhs operator, false otherwise
+		/// </returns>
 		public static bool operator >= (Operator lhs, Operator rhs)
 		{
 			return lhs.Precedence >= rhs.Precedence;
 		} // end operator >=
 
 		/// <summary>
-		/// Determines if one Operator is less than another
+		/// Determines if one Operator is less than or equal to another
 		/// </summary>
 		/// <param name="lhs">The left hand side operand</param>
 		/// <param name="rhs">The right hand side operand</param>
-		/// <returns>True if lhs operator is less than rhs operator</returns>
+		/// <returns>
+		/// True if lhs operator is less than or equal to rhs operator, false otherwise
+		/// </returns>
 		public static bool operator <= (Operator lhs, Operator rhs)
 		{
 			return lhs.Precedence <= rhs.Precedence;

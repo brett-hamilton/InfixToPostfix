@@ -1,6 +1,7 @@
 A = ((((A+B)-C)*D)/(E+1))
 Alpha = Beta + Gamma * Delta
 Beta = Alpha / Delta - Gamma
+Alpha = 62.5 * (Gamma - Dela) / 125
 Q = W * (E + R) / T * Y
 A = (B+C) * (C - D)/2 + E
 Z = (Y * X / (U + V)

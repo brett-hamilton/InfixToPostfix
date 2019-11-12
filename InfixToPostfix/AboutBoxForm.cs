@@ -22,7 +22,7 @@ using System.Windows.Forms;
 namespace InfixToPostfix
 {
 	/// <summary>
-	/// Representes the about box with program information
+	/// Represents the about box with program information
 	/// </summary>
 	public partial class AboutBoxForm : Form
 	{
@@ -39,7 +39,7 @@ namespace InfixToPostfix
 			this.labelCopyright.Text = AssemblyCopyright;
 			this.labelCompanyName.Text = AssemblyCompany;
 			this.textBoxDescription.Text = AssemblyDescription;
-		}
+		} // end AboutBoxForm
 		#endregion
 
 		#region Assembly Attribute Accessors
@@ -121,5 +121,5 @@ namespace InfixToPostfix
 			}
 		}
 		#endregion
-	}
+	} // end AboutBoxForm
 }

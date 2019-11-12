@@ -43,7 +43,7 @@ namespace Utils
 
 				if (col == 0)
 				{
-					// Set column to first if delimter is found at first position
+					// Set column to first if delimiter is found at first position
 					col = 1;
 				}
 

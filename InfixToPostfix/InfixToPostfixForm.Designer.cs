@@ -31,7 +31,11 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InfixToPostfixForm));
 			this.menuStrip = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.openInfixDataFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
+			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.aboutInfixToPostfixToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.panelMain = new System.Windows.Forms.Panel();
 			this.labelTitle = new System.Windows.Forms.Label();
 			this.btnExit = new System.Windows.Forms.Button();
@@ -43,12 +47,11 @@
 			this.tbInfix = new System.Windows.Forms.TextBox();
 			this.listBoxInfix = new System.Windows.Forms.ListBox();
 			this.statusStrip = new System.Windows.Forms.StatusStrip();
-			this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
-			this.openInfixDataFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.aboutInfixToPostfixToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripStatusLabelTitle = new System.Windows.Forms.ToolStripStatusLabel();
+			this.toolStripStatusLabelDate = new System.Windows.Forms.ToolStripStatusLabel();
 			this.menuStrip.SuspendLayout();
 			this.panelMain.SuspendLayout();
+			this.statusStrip.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// menuStrip
@@ -59,7 +62,8 @@
 			this.menuStrip.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip.Name = "menuStrip";
 			this.menuStrip.Size = new System.Drawing.Size(800, 24);
-			this.menuStrip.TabIndex = 0;
+			this.menuStrip.TabIndex = 7;
+			this.menuStrip.TabStop = true;
 			this.menuStrip.Text = "menuStrip1";
 			// 
 			// fileToolStripMenuItem
@@ -70,7 +74,28 @@
             this.exitToolStripMenuItem});
 			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
 			this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-			this.fileToolStripMenuItem.Text = "File";
+			this.fileToolStripMenuItem.Text = "&File";
+			// 
+			// openInfixDataFileToolStripMenuItem
+			// 
+			this.openInfixDataFileToolStripMenuItem.Image = global::InfixToPostfix.Properties.Resources.file_48px;
+			this.openInfixDataFileToolStripMenuItem.Name = "openInfixDataFileToolStripMenuItem";
+			this.openInfixDataFileToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+			this.openInfixDataFileToolStripMenuItem.Text = "&Open Infix Data File";
+			this.openInfixDataFileToolStripMenuItem.Click += new System.EventHandler(this.openInfixDataFileToolStripMenuItem_Click);
+			// 
+			// toolStripSeparator
+			// 
+			this.toolStripSeparator.Name = "toolStripSeparator";
+			this.toolStripSeparator.Size = new System.Drawing.Size(174, 6);
+			// 
+			// exitToolStripMenuItem
+			// 
+			this.exitToolStripMenuItem.Image = global::InfixToPostfix.Properties.Resources.close_window_48px;
+			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+			this.exitToolStripMenuItem.Text = "E&xit";
+			this.exitToolStripMenuItem.Click += new System.EventHandler(this.btnExit_Click);
 			// 
 			// helpToolStripMenuItem
 			// 
@@ -78,7 +103,15 @@
             this.aboutInfixToPostfixToolStripMenuItem});
 			this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
 			this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-			this.helpToolStripMenuItem.Text = "Help";
+			this.helpToolStripMenuItem.Text = "&Help";
+			// 
+			// aboutInfixToPostfixToolStripMenuItem
+			// 
+			this.aboutInfixToPostfixToolStripMenuItem.Image = global::InfixToPostfix.Properties.Resources.info_48px;
+			this.aboutInfixToPostfixToolStripMenuItem.Name = "aboutInfixToPostfixToolStripMenuItem";
+			this.aboutInfixToPostfixToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+			this.aboutInfixToPostfixToolStripMenuItem.Text = "&About Infix to Postfix...";
+			this.aboutInfixToPostfixToolStripMenuItem.Click += new System.EventHandler(this.aboutInfixToPostfixToolStripMenuItem_Click);
 			// 
 			// panelMain
 			// 
@@ -95,10 +128,11 @@
 			this.panelMain.Location = new System.Drawing.Point(0, 24);
 			this.panelMain.Name = "panelMain";
 			this.panelMain.Size = new System.Drawing.Size(800, 426);
-			this.panelMain.TabIndex = 1;
+			this.panelMain.TabIndex = 3;
 			// 
 			// labelTitle
 			// 
+			this.labelTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.labelTitle.AutoSize = true;
 			this.labelTitle.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.labelTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(30)))), ((int)(((byte)(66)))));
@@ -110,39 +144,43 @@
 			// 
 			// btnExit
 			// 
+			this.btnExit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
 			this.btnExit.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnExit.Location = new System.Drawing.Point(556, 354);
 			this.btnExit.Name = "btnExit";
 			this.btnExit.Size = new System.Drawing.Size(167, 33);
-			this.btnExit.TabIndex = 3;
-			this.btnExit.Text = "Exit";
+			this.btnExit.TabIndex = 6;
+			this.btnExit.Text = "&Exit";
 			this.btnExit.UseVisualStyleBackColor = true;
 			this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
 			// 
 			// btnClear
 			// 
+			this.btnClear.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
 			this.btnClear.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnClear.Location = new System.Drawing.Point(317, 354);
 			this.btnClear.Name = "btnClear";
 			this.btnClear.Size = new System.Drawing.Size(167, 33);
-			this.btnClear.TabIndex = 3;
-			this.btnClear.Text = "Clear";
+			this.btnClear.TabIndex = 5;
+			this.btnClear.Text = "&Clear";
 			this.btnClear.UseVisualStyleBackColor = true;
 			this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
 			// 
 			// btnGenerate
 			// 
+			this.btnGenerate.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
 			this.btnGenerate.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnGenerate.Location = new System.Drawing.Point(78, 354);
 			this.btnGenerate.Name = "btnGenerate";
 			this.btnGenerate.Size = new System.Drawing.Size(167, 33);
-			this.btnGenerate.TabIndex = 3;
-			this.btnGenerate.Text = "Generate Postfix";
+			this.btnGenerate.TabIndex = 4;
+			this.btnGenerate.Text = "&Generate Postfix";
 			this.btnGenerate.UseVisualStyleBackColor = true;
 			this.btnGenerate.Click += new System.EventHandler(this.btnGenerate_Click);
 			// 
 			// labelPostfix
 			// 
+			this.labelPostfix.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.labelPostfix.AutoSize = true;
 			this.labelPostfix.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.labelPostfix.Location = new System.Drawing.Point(30, 310);
@@ -153,16 +191,19 @@
 			// 
 			// labelInfix
 			// 
+			this.labelInfix.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.labelInfix.AutoSize = true;
 			this.labelInfix.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.labelInfix.Location = new System.Drawing.Point(30, 274);
 			this.labelInfix.Name = "labelInfix";
 			this.labelInfix.Size = new System.Drawing.Size(110, 19);
-			this.labelInfix.TabIndex = 2;
+			this.labelInfix.TabIndex = 0;
 			this.labelInfix.Text = "Infix Expression";
 			// 
 			// tbPostfix
 			// 
+			this.tbPostfix.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.tbPostfix.BackColor = System.Drawing.SystemColors.Info;
 			this.tbPostfix.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.tbPostfix.ForeColor = System.Drawing.Color.RoyalBlue;
@@ -170,10 +211,12 @@
 			this.tbPostfix.Name = "tbPostfix";
 			this.tbPostfix.ReadOnly = true;
 			this.tbPostfix.Size = new System.Drawing.Size(607, 27);
-			this.tbPostfix.TabIndex = 1;
+			this.tbPostfix.TabIndex = 3;
 			// 
 			// tbInfix
 			// 
+			this.tbInfix.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.tbInfix.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.tbInfix.Location = new System.Drawing.Point(163, 266);
 			this.tbInfix.Name = "tbInfix";
@@ -181,9 +224,13 @@
 			this.tbInfix.TabIndex = 1;
 			this.tbInfix.Click += new System.EventHandler(this.tbInfix_Enter);
 			this.tbInfix.Enter += new System.EventHandler(this.tbInfix_Enter);
+			this.tbInfix.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbInfix_KeyPress);
 			// 
 			// listBoxInfix
 			// 
+			this.listBoxInfix.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.listBoxInfix.Enabled = false;
 			this.listBoxInfix.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.listBoxInfix.FormattingEnabled = true;
@@ -191,45 +238,35 @@
 			this.listBoxInfix.Location = new System.Drawing.Point(30, 48);
 			this.listBoxInfix.Name = "listBoxInfix";
 			this.listBoxInfix.Size = new System.Drawing.Size(740, 194);
-			this.listBoxInfix.TabIndex = 0;
+			this.listBoxInfix.TabIndex = 8;
 			this.listBoxInfix.SelectedIndexChanged += new System.EventHandler(this.listBoxInfix_SelectedIndexChanged);
 			// 
 			// statusStrip
 			// 
+			this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabelTitle,
+            this.toolStripStatusLabelDate});
 			this.statusStrip.Location = new System.Drawing.Point(0, 428);
 			this.statusStrip.Name = "statusStrip";
 			this.statusStrip.Size = new System.Drawing.Size(800, 22);
 			this.statusStrip.TabIndex = 2;
 			this.statusStrip.Text = "statusStrip1";
 			// 
-			// toolStripSeparator
+			// toolStripStatusLabelTitle
 			// 
-			this.toolStripSeparator.Name = "toolStripSeparator";
-			this.toolStripSeparator.Size = new System.Drawing.Size(174, 6);
+			this.toolStripStatusLabelTitle.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.toolStripStatusLabelTitle.Name = "toolStripStatusLabelTitle";
+			this.toolStripStatusLabelTitle.Size = new System.Drawing.Size(231, 17);
+			this.toolStripStatusLabelTitle.Text = "Project 3 - Infix to Postfix, Brett Hamilton";
 			// 
-			// openInfixDataFileToolStripMenuItem
+			// toolStripStatusLabelDate
 			// 
-			this.openInfixDataFileToolStripMenuItem.Image = global::InfixToPostfix.Properties.Resources.file_48px;
-			this.openInfixDataFileToolStripMenuItem.Name = "openInfixDataFileToolStripMenuItem";
-			this.openInfixDataFileToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
-			this.openInfixDataFileToolStripMenuItem.Text = "Open Infix Data File";
-			this.openInfixDataFileToolStripMenuItem.Click += new System.EventHandler(this.openInfixDataFileToolStripMenuItem_Click);
-			// 
-			// exitToolStripMenuItem
-			// 
-			this.exitToolStripMenuItem.Image = global::InfixToPostfix.Properties.Resources.close_window_48px;
-			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
-			this.exitToolStripMenuItem.Text = "Exit";
-			this.exitToolStripMenuItem.Click += new System.EventHandler(this.btnExit_Click);
-			// 
-			// aboutInfixToPostfixToolStripMenuItem
-			// 
-			this.aboutInfixToPostfixToolStripMenuItem.Image = global::InfixToPostfix.Properties.Resources.info_48px;
-			this.aboutInfixToPostfixToolStripMenuItem.Name = "aboutInfixToPostfixToolStripMenuItem";
-			this.aboutInfixToPostfixToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
-			this.aboutInfixToPostfixToolStripMenuItem.Text = "About Infix to Postfix...";
-			this.aboutInfixToPostfixToolStripMenuItem.Click += new System.EventHandler(this.aboutInfixToPostfixToolStripMenuItem_Click);
+			this.toolStripStatusLabelDate.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.toolStripStatusLabelDate.Name = "toolStripStatusLabelDate";
+			this.toolStripStatusLabelDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			this.toolStripStatusLabelDate.Size = new System.Drawing.Size(523, 17);
+			this.toolStripStatusLabelDate.Spring = true;
+			this.toolStripStatusLabelDate.Text = "Date";
 			// 
 			// InfixToPostfixForm
 			// 
@@ -246,10 +283,13 @@
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Infix to Postfix";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.InfixToPostfixForm_FormClosing);
+			this.Load += new System.EventHandler(this.InfixToPostfixForm_Load);
 			this.menuStrip.ResumeLayout(false);
 			this.menuStrip.PerformLayout();
 			this.panelMain.ResumeLayout(false);
 			this.panelMain.PerformLayout();
+			this.statusStrip.ResumeLayout(false);
+			this.statusStrip.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -275,6 +315,8 @@
 		private System.Windows.Forms.Button btnGenerate;
 		private System.Windows.Forms.Label labelTitle;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
+		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelTitle;
+		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelDate;
 	}
 }
 

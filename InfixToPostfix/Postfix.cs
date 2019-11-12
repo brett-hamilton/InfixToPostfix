@@ -52,7 +52,7 @@ namespace InfixToPostfix
 		/// <summary>
 		/// Parameterized constructor
 		/// </summary>
-		/// <param name="input">The input representing the infix expression</param>
+		/// <param name="input">The string representing the infix expression</param>
 		public Postfix (string input)
 		{
 			InfixExpression = input;
@@ -73,14 +73,14 @@ namespace InfixToPostfix
 			Stack<Operator> stk = new Stack<Operator> ( );
 			Operator tempOp;
 
-			if (string.IsNullOrEmpty (infix))		// If this is a blank line
+			if (string.IsNullOrEmpty (infix))		// If this is a blank line, return empty string
 				return postfix;
 
-			List<string> tokens = Tokenize (infix, StrOps);
+			List<string> tokens = Tokenize (infix, StrOps);		// Convert infix to tokens
 
 			for (int i = 0; i < tokens.Count; i++)
 			{
-				// If token is operand, concat to postfix
+				// If token is operand, concatenate to postfix
 				if (tokens[i].IndexOfAny (StrOps.ToCharArray ( )) < 0)
 					postfix += tokens[i] + "  ";
 				else
@@ -109,13 +109,13 @@ namespace InfixToPostfix
 							
 						}
 
-						// Error if open parenthesis not found
+						// Error message if open parenthesis not found
 						if (!found)
 							return "*** ERROR ***\tUnpaired open parenthesis";
 					}
 					else
 					{
-						// Pop stack until end is reached, operator of lower precendence is found,
+						// Pop stack until end is reached, operator of lower precedence is found,
 						//	or open parenthesis found
 						while (stk.Count > 0 && tempOp <= stk.Peek ( ) && stk.Peek ( ).Symbol != "(")
 						{
@@ -144,6 +144,5 @@ namespace InfixToPostfix
 			return postfix;
 		} // end Convert
 		#endregion
-
 	} // end Postfix
 }

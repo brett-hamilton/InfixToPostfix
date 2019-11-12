@@ -26,23 +26,33 @@ namespace InfixToPostfix
 {
 	/// <summary>
 	/// Shows the main program form, allowing user to open a text file and convert infix expressions
-	///		to postfix expressions
+	///		to postfix expressions or manually enter infix expressions
 	/// </summary>
 	public partial class InfixToPostfixForm : Form
 	{
-		List<Postfix> postfixes = new List<Postfix> ( );
+		List<Postfix> postfixes = new List<Postfix> ( );	// List of postfix expressions
 
 		#region Constructors and Loading
 		/// <summary>
-		/// Default constructor
+		/// Default constructor that displays the main window
 		/// </summary>
 		public InfixToPostfixForm ( )
 		{
 			InitializeComponent ( );
 		} // end InfixToPostfixForm
+
+		/// <summary>
+		/// Updates the current date when the form is loaded
+		/// </summary>
+		/// <param name="sender">The object originating the event</param>
+		/// <param name="e">The instance of the event that holds event information</param>
+		private void InfixToPostfixForm_Load (object sender, EventArgs e)
+		{
+			toolStripStatusLabelDate.Text = DateTime.Today.ToLongDateString ( );
+		} // end InfixToPostfixForm_Load
 		#endregion
 
-		#region Click Events
+		#region Events
 		/// <summary>
 		/// Allows user to open a text file with infix expressions and convert to postfix notation
 		/// </summary>
@@ -99,7 +109,7 @@ namespace InfixToPostfix
 					rdr.Close ( );
 			}
 
-			// Update infix expression listbox
+			// Update infix expression list box
 			foreach (Postfix pf in postfixes)
 				listBoxInfix.Items.Add (pf.InfixExpression);
 
@@ -161,6 +171,30 @@ namespace InfixToPostfix
 			AboutBoxForm about = new AboutBoxForm ( );
 			about.ShowDialog ( );
 		} // end aboutInfixToPostfixToolStripMenuItem_Click
+
+		/// <summary>
+		/// If user presses Enter, the event for the Generate Postfix button is fired
+		/// </summary>
+		/// <param name="sender">The object sending the key press event</param>
+		/// <param name="e">The event instance containing information about the event</param>
+		private void tbInfix_KeyPress (object sender, KeyPressEventArgs e)
+		{
+			if (e.KeyChar == (char) Keys.Enter)
+				btnGenerate_Click (sender, e);
+		} // end tbInfix_KeyPress
+
+		/// <summary>
+		/// Updates the text boxes with data pertaining to current list selection
+		/// </summary>
+		/// <param name="sender">The list option selected</param>
+		/// <param name="e">The event instance containing information about the event</param>
+		private void listBoxInfix_SelectedIndexChanged (object sender, EventArgs e)
+		{
+			int index = listBoxInfix.SelectedIndex;
+
+			tbInfix.Text = postfixes[index].InfixExpression;
+			tbPostfix.Text = postfixes[index].PostfixExpression;
+		} // end listBoxInfix_SelectedIndexChanged
 		#endregion
 
 		#region Exit Message		
@@ -177,20 +211,5 @@ namespace InfixToPostfix
 			GoodbyeMessage (msg);
 		} // end InfixToPostfixForm_FormClosing
 		#endregion
-
-		/// <summary>
-		/// Updates the text boxes with data pertaining to current list selection
-		/// </summary>
-		/// <param name="sender">The list option selected</param>
-		/// <param name="e">The event instance containing information about the event</param>
-		private void listBoxInfix_SelectedIndexChanged (object sender, EventArgs e)
-		{
-			int index = listBoxInfix.SelectedIndex;
-
-			tbInfix.Text = postfixes[index].InfixExpression;
-			tbPostfix.Text = postfixes[index].PostfixExpression;
-		} // end listBoxInfix_SelectedIndexChanged
-
-
-	}
-} // end InfixToPostfixForm
+	} // end InfixToPostfixForm
+}
